@@ -1,3 +1,18 @@
-table {
+:host table {
     width: 100%;
+
+    tbody {
+
+        tr {
+            transition: ease-in-out 200ms;
+
+            &:hover {
+                background-color: #fff7fa;
+
+                .mat-cell {
+                    color: #ff4081;
+                }
+            }
+        }
+    }
 }

@@ -19,6 +19,7 @@ export class CrudEditViewComponent implements OnInit {
   dateValue: any;
   listCategorys: any;
   disabledForm: boolean = false;
+  title: any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -45,6 +46,9 @@ export class CrudEditViewComponent implements OnInit {
 
     if (this.activatedRoute.snapshot.url[0].path === 'view') {
       this.disabledForm = true;
+      this.title = 'Visualizar lançamento';
+    } else {
+      this.title = 'Editar lançamento';
     }
 
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {

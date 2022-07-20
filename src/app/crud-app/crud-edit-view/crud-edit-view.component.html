@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Editar lançamentos</h1>
+                <h1>{{title}}</h1>
             </div>
         </div>
         <div class="row">
@@ -37,7 +37,7 @@
 
                     <div class="button-row">
                         <button mat-stroked-button color="primary" (click)="backPage()">Voltar</button>
-                        <button mat-stroked-button color="accent">Salvar</button>
+                        <button mat-stroked-button color="accent" *ngIf="!disabledForm">Salvar</button>
                     </div>
 
                 </form>
