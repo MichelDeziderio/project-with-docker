@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrudAppComponent } from './crud-app/crud-app.component';
-import { CrudEditComponent } from './crud-app/crud-edit/crud-edit.component';
+import { CrudEditViewComponent } from './crud-app/crud-edit-view/crud-edit-view.component';
 import { TableListComponent } from './shared/table-list/table-list.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -24,7 +24,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AppComponent,
     CrudAppComponent,
     TableListComponent,
-    CrudEditComponent
+    CrudEditViewComponent
   ],
   imports: [
     BrowserModule,

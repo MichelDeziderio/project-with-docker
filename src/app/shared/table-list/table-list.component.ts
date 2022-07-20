@@ -21,9 +21,12 @@ export class TableListComponent implements OnInit {
     this.displayedColumns = ['description', 'category', 'date', 'value', 'options'];
   }
 
-
   editData(id: string) {
     this.router.navigate([`edit/${id}`]);
+  }
+
+  viewData(id: string) {
+    this.router.navigate([`view/${id}`]);
   }
 
 }

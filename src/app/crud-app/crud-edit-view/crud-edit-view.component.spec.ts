@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudEditComponent } from './crud-edit.component';
+import { CrudEditViewComponent } from './crud-edit-view.component';
 
-describe('CrudEditComponent', () => {
-  let component: CrudEditComponent;
-  let fixture: ComponentFixture<CrudEditComponent>;
+describe('CrudEditViewComponent', () => {
+  let component: CrudEditViewComponent;
+  let fixture: ComponentFixture<CrudEditViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrudEditComponent ]
+      declarations: [ CrudEditViewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CrudEditComponent);
+    fixture = TestBed.createComponent(CrudEditViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

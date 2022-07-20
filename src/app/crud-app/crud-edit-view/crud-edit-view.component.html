@@ -23,7 +23,7 @@
 
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label>Categoria Select</mat-label>
-                        <mat-select [(value)]="dataSource.idCategoria">
+                        <mat-select [(value)]="dataSource.idCategoria" [disabled]="disabledForm">
                             <mat-option [value]="options.id" *ngFor="let options of listCategorys">{{ options.name }}
                             </mat-option>
                         </mat-select>

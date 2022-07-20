@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
-import { Category } from '../models/category';
-import { Lauches } from '../models/lauches';
 import { apiService } from '../services/services.service';
 import { MergeForCategory } from '../shared/utils/merge-lauche-and-category';
 
