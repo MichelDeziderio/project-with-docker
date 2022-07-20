@@ -1,0 +1,34 @@
+<form class="example-form" [formGroup]="formEdit" *ngIf="dataSource">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" formControlName="description">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" [value]="dateValue">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="date" [value]="dateValue">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Categoria Select</mat-label>
+        <mat-select [(value)]="dataSource.idCategoria">
+            <mat-option [value]="options.id" *ngFor="let options of listCategorys">{{ options.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Valor</mat-label>
+        <input matInput placeholder="Valor" formControlName="value">
+    </mat-form-field>
+
+</form>
