@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
 import { MergeForCategory } from 'src/app/shared/utils/merge-lauche-and-category';
 
@@ -20,7 +20,8 @@ export class CrudEditComponent implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public service: apiService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public router: Router
   ) {
     this.formEdit = formBuilder.group({
       description: ['', Validators.required],
@@ -59,14 +60,18 @@ export class CrudEditComponent implements OnInit {
 
       this.formEdit = this.formBuilder.group({
         description: [mergeData.description, Validators.required],
-        date: new FormControl(mergeData.date),
+        date: [{ value: new Date(mergeData.date), disabled: true }],
         category: [mergeData.name, Validators.required],
-        value: [mergeData.value, Validators.required]
+        value: [{ value: mergeData.value, disabled: true }, Validators.required,]
       })
 
       this.dataSource = mergeData;
 
     })
+  }
+
+  backPage() {
+    this.router.navigate(['lauches']);
   }
 
 }

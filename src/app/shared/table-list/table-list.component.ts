@@ -19,12 +19,10 @@ export class TableListComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayedColumns = ['description', 'category', 'date', 'value', 'options'];
-    console.log(this.dataSource);
   }
 
 
   editData(id: string) {
-    console.log(id);
     this.router.navigate([`edit/${id}`]);
   }
 

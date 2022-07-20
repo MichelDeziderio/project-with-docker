@@ -1,34 +1,47 @@
-<form class="example-form" [formGroup]="formEdit" *ngIf="dataSource">
+<div class="edit-lauches">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Editar lançamentos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form class="form" [formGroup]="formEdit" *ngIf="dataSource">
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Descrição</mat-label>
-        <input matInput placeholder="Descrição" formControlName="description">
-    </mat-form-field>
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Descrição</mat-label>
+                        <input matInput placeholder="Descrição" formControlName="description">
+                    </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
-        <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date" [value]="dateValue">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field> -->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Data</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker3" formControlName="date" [value]="dateValue">
-        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-        <mat-datepicker #picker3></mat-datepicker>
-    </mat-form-field>
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Categoria Select</mat-label>
+                        <mat-select [(value)]="dataSource.idCategoria">
+                            <mat-option [value]="options.id" *ngFor="let options of listCategorys">{{ options.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Categoria Select</mat-label>
-        <mat-select [(value)]="dataSource.idCategoria">
-            <mat-option [value]="options.id" *ngFor="let options of listCategorys">{{ options.name }}</mat-option>
-        </mat-select>
-    </mat-form-field>
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Valor</mat-label>
+                        <input matInput placeholder="Valor" formControlName="value">
+                    </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="Valor" formControlName="value">
-    </mat-form-field>
 
-</form>
+                    <div class="button-row">
+                        <button mat-stroked-button color="primary" (click)="backPage()">Voltar</button>
+                        <button mat-stroked-button color="accent">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,8 @@ import { CrudAppComponent } from './crud-app/crud-app.component';
 import { CrudEditComponent } from './crud-app/crud-edit/crud-edit.component';
 
 const routes: Routes = [
-  { path: '', component: CrudAppComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'lauches' },
+  { path: 'lauches', component: CrudAppComponent },
   { path: 'edit/:id', component: CrudEditComponent },
 ];
 
