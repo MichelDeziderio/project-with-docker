@@ -1,3 +1,20 @@
-.list-lauches{
+.list-lauches {
     margin-top: 50px;
+}
+
+.example-spacer {
+    flex: 2 2 auto;
+}
+
+.btn-toolbar {
+    padding: 8px 20px;
+    font-size: 20px;
+    color: #212529;
+    text-decoration: none;
+    transition: ease-in-out 200ms;
+    text-transform: uppercase;
+
+    &:hover {
+        color: #ff4081;
+    }
 }

@@ -16,9 +16,10 @@ import { AppComponent } from './app.component';
 import { CrudAppComponent } from './crud-app/crud-app.component';
 import { CrudEditViewComponent } from './crud-app/crud-edit-view/crud-edit-view.component';
 import { TableListComponent } from './shared/table-list/table-list.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.co
     MatNativeDateModule,
     MatSelectModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

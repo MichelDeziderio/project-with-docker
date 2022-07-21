@@ -1,17 +1,34 @@
+<mat-toolbar>
+
+    <mat-toolbar-row>
+
+        <a class="btn-toolbar" routerLink="/lauches" routerLinkActive="active">Lançamentos</a>
+
+        <span class="example-spacer"></span>
+
+        <a class="btn-toolbar" routerLink="/categorys" routerLinkActive="active">Categorias</a>
+
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
 <div class="list-lauches">
     <div class="container">
+
         <div class="row">
             <div class="col-12">
                 <h1>Lançamentos</h1>
             </div>
-            <div class="col-12 mb-2">
+        </div>
 
+        <div class="row">
+            <div class="col-12 mb-2">
                 <button mat-stroked-button color="accent" (click)="newLauche()">
                     Adcionar lançamento
                 </button>
-
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <app-table-list [dataSource]="dataSource" [tableHeader]="tableHeader"
