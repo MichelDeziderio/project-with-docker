@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { apiService } from '../services/services.service';
+import { ToastAlertComponent } from '../shared/toast-alert/toast-alert.component';
 import { MergeForCategory } from '../shared/utils/merge-lauche-and-category';
 
 @Component({
@@ -14,9 +15,12 @@ export class CrudAppComponent implements OnInit {
   primaryData: any;
   tableHeader = ['description', 'category', 'date', 'value', 'options'];
 
+  sendAlertMessage = 'Lançamento cadastrado'
+
   constructor(
     public service: apiService,
-    public router: Router
+    public router: Router,
+    public alert: ToastAlertComponent
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +48,19 @@ export class CrudAppComponent implements OnInit {
 
   newLauche() {
     this.router.navigate(['lauches/register']);
+  }
+
+  openAlerts() {
+    this.alert.open(
+      'Lançamento cadatrado com sucesso',
+      'Fechar',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 1000 * 14
+      });
+
+    // <button mat-stroked-button color="accent" (click)="openSnack()">Toast</button>
   }
 
 }

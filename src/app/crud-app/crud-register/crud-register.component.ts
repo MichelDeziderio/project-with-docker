@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { apiService } from 'src/app/services/services.service';
 import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 
 @Component({
   selector: 'app-crud-register',
@@ -20,6 +21,7 @@ export class CrudRegisterComponent implements OnInit {
     public service: apiService,
     private dateAdapter: DateAdapter<any>,
     public router: Router,
+    public alert: ToastAlertComponent
   ) {
     this.registerLauche = formBuilder.group({
       description: ['', Validators.required],
@@ -59,9 +61,21 @@ export class CrudRegisterComponent implements OnInit {
       idCategoria: category?.value,
       value: Number(value?.value)
     }
-    
+
     this.service.postLaunches(send).subscribe(result => {
-      console.log(result);
+      this.openAlerts('Seu lançamento foi inserido com sucesso! 😊');
+      this.backPage();
     })
+  }
+
+  openAlerts(message: string) {
+    this.alert.open(
+      message,
+      'Fechar',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 1000 * 14
+      });
   }
 }

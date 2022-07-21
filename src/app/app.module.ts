@@ -20,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToastAlertComponent } from './shared/toast-alert/toast-alert.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatGridListModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [ToastAlertComponent, MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
