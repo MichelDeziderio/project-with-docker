@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
+import { ToastAlertComponent } from '../toast-alert/toast-alert.component';
 
 @Component({
   selector: 'app-table-list',
@@ -18,7 +19,8 @@ export class TableListComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public service: apiService
+    public service: apiService,
+    public alert: ToastAlertComponent
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +37,20 @@ export class TableListComponent implements OnInit {
 
   deleteData(id: string) {
     this.service.deleteLaunche(id).subscribe(result => {
+      this.openAlerts('Seu lançamento foi deletado! 😊');
       this.reloadTable.emit(true);
     })
+  }
+
+  openAlerts(message: string) {
+    this.alert.open(
+      message,
+      'Fechar',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 1000 * 14
+      });
   }
 
 }
