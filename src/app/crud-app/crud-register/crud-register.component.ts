@@ -57,10 +57,9 @@ export class CrudRegisterComponent implements OnInit {
       description: description?.value,
       date: new Date(date?.value).toLocaleDateString(),
       idCategoria: category?.value,
-      value: value?.value
+      value: Number(value?.value)
     }
-    console.log(send);
-    return;
+    
     this.service.postLaunches(send).subscribe(result => {
       console.log(result);
     })

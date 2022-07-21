@@ -1,18 +1,35 @@
-:host table {
-    width: 100%;
+:host ::ng-deep .custom {
 
-    tbody {
+    @media(max-width: 780px) {
+        overflow-y: hidden;
+        max-width: 100%;
+    }
 
-        tr {
-            transition: ease-in-out 200ms;
+    .table-list {
 
-            &:hover {
-                background-color: #fff7fa;
+        @media(max-width: 780px) {
+            width: 680px;
+            padding: 10px;
+        }
 
-                .mat-cell {
-                    color: #ff4081;
+        table {
+            min-width: 100%;
+
+            tbody {
+
+                tr {
+                    transition: ease-in-out 200ms;
+
+                    &:hover {
+                        background-color: #fff7fa;
+
+                        .mat-cell {
+                            color: #ff4081;
+                        }
+                    }
                 }
             }
         }
     }
+
 }
