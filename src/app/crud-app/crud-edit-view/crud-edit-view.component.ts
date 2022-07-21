@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
 import { MergeForCategory } from 'src/app/shared/utils/merge-lauche-and-category';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 @Component({
@@ -43,8 +43,7 @@ export class CrudEditViewComponent implements OnInit {
   }
 
   editLauche() {
-
-    if (this.activatedRoute.snapshot.url[0].path === 'view') {
+    if (this.activatedRoute.snapshot.url[1].path === 'view') {
       this.disabledForm = true;
       this.title = 'Visualizar lançamento';
     } else {
@@ -77,7 +76,7 @@ export class CrudEditViewComponent implements OnInit {
       this.formEdit = this.formBuilder.group({
         description: [{ value: mergeData.description, disabled: this.disabledForm }, Validators.required],
         date: [{ value: this.dateValue.value, disabled: true }],
-        category: [{ value: mergeData.name, disabled: this.disabledForm }, Validators.required],
+        category: [{ value: mergeData.id, disabled: this.disabledForm }, Validators.required],
         value: [{ value: mergeData.value, disabled: true }, Validators.required]
       })
 
@@ -92,6 +91,26 @@ export class CrudEditViewComponent implements OnInit {
   convertDate(date: string) {
     let newDate: any = date.split('/');
     return newDate = new Date(`${newDate[2]}-${newDate[1]}-${newDate[0]}`)
+  }
+
+  save() {
+
+    const description = this.formEdit.get('description');
+    const date = this.formEdit.get('date');
+    const value = this.formEdit.get('value');
+
+    const send = {
+      description: description?.value,
+      date: new Date(date?.value).toLocaleDateString(),
+      idCategoria: this.dataSource.idCategoria,
+      value: value?.value
+    }
+    console.log(send);
+    return;
+
+    this.service.postLaunches(send).subscribe(result => {
+      console.log(result);
+    })
   }
 
 }

@@ -18,13 +18,15 @@ import { CrudEditViewComponent } from './crud-app/crud-edit-view/crud-edit-view.
 import { TableListComponent } from './shared/table-list/table-list.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrudAppComponent,
     TableListComponent,
-    CrudEditViewComponent
+    CrudEditViewComponent,
+    CrudRegisterComponent
   ],
   imports: [
     BrowserModule,

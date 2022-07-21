@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { apiService } from '../services/services.service';
 import { MergeForCategory } from '../shared/utils/merge-lauche-and-category';
 
@@ -11,19 +12,21 @@ export class CrudAppComponent implements OnInit {
 
   dataSource: any;
   primaryData: any;
+  tableHeader = ['description', 'category', 'date', 'value', 'options'];
 
   constructor(
-    public service: apiService
+    public service: apiService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
     this.getLauches();
-    this.getCategorys();
   }
 
   getLauches() {
     this.service.getLaunches().subscribe(result => {
       this.primaryData = result;
+      this.getCategorys();
     })
   }
 
@@ -33,5 +36,14 @@ export class CrudAppComponent implements OnInit {
     })
   }
 
+  reloadeTablelist(reload: boolean) {
+
+    if (reload) { this.getLauches(); console.log('reload') }
+
+  }
+
+  newLauche() {
+    this.router.navigate(['lauches/register']);
+  }
 
 }

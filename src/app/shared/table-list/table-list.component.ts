@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { apiService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-table-list',
@@ -10,23 +11,32 @@ import { Router } from '@angular/router';
 export class TableListComponent implements OnInit {
 
   @Input() dataSource: any;
+  @Input() tableHeader: any;
+  @Output() reloadTable = new EventEmitter();
 
   displayedColumns: string[] = [];
 
   constructor(
-    public router: Router
+    public router: Router,
+    public service: apiService
   ) { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['description', 'category', 'date', 'value', 'options'];
+    this.displayedColumns = this.tableHeader;
   }
 
   editData(id: string) {
-    this.router.navigate([`edit/${id}`]);
+    this.router.navigate([`lauches/edit/${id}`]);
   }
 
   viewData(id: string) {
-    this.router.navigate([`view/${id}`]);
+    this.router.navigate([`lauches/view/${id}`]);
+  }
+
+  deleteData(id: string) {
+    this.service.deleteLaunche(id).subscribe(result => {
+      this.reloadTable.emit(true);
+    })
   }
 
 }

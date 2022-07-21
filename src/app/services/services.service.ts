@@ -19,12 +19,20 @@ export class apiService {
         return this.httpClient.get(environment.url + 'lancamento');
     }
 
-    getCategorys(): Observable<any> {
-        return this.httpClient.get(environment.url + 'categoria');
+    postLaunches(data: object): Observable<any> {
+        return this.httpClient.post(environment.url + 'lancamento', data);
     }
 
     getLauncheById(id: any): Observable<any> {
         return this.httpClient.get(environment.url + 'lancamento/' + id);
+    }
+
+    deleteLaunche(id: any): Observable<any> {
+        return this.httpClient.delete(environment.url + 'lancamento/' + id);
+    }
+
+    getCategorys(): Observable<any> {
+        return this.httpClient.get(environment.url + 'categoria');
     }
 
 }

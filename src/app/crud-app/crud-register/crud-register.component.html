@@ -1,4 +1,4 @@
-<div class="edit-lauches">
+<div class="register-lauches">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="form" [formGroup]="formEdit" *ngIf="dataSource">
+                <div class="form" [formGroup]="registerLauche">
 
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label>Descrição</mat-label>
@@ -23,7 +23,7 @@
 
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label>Selecione uma categoria</mat-label>
-                        <mat-select [(value)]="dataSource.idCategoria" [disabled]="disabledForm">
+                        <mat-select [disabled]="!listCategorys" formControlName="category">
                             <mat-option [value]="options.id" *ngFor="let options of listCategorys">{{ options.name }}
                             </mat-option>
                         </mat-select>
@@ -31,14 +31,13 @@
 
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label>Valor</mat-label>
-                        <input matInput placeholder="Valor" formControlName="value">
+                        <input matInput placeholder="Valor" formControlName="value" numbersOnly>
                     </mat-form-field>
 
 
                     <div class="button-row">
                         <button mat-stroked-button color="primary" (click)="backPage()">Voltar</button>
-                        <button mat-stroked-button color="accent" *ngIf="!disabledForm" [disabled]="formEdit.invalid"
-                            (click)="save()">Salvar</button>
+                        <button mat-stroked-button color="accent" [disabled]="registerLauche.invalid" (click)="register()">Salvar</button>
                     </div>
 
                 </div>

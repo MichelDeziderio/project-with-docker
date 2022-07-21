@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8" >
 
     <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef> Descrição </th>
@@ -29,6 +29,9 @@
             </button>
             <button mat-icon-button color="accent" (click)="editData(element.id)">
                 <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="deleteData(element.id)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
             </button>
         </td>
     </ng-container>
