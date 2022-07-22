@@ -35,4 +35,12 @@ export class apiService {
         return this.httpClient.get(environment.url + 'categoria');
     }
 
+    getCategoryById(id: any): Observable<any> {
+        return this.httpClient.get(environment.url + 'categoria/' + id);
+    }
+
+    postCategorys(data: object): Observable<any> {
+        return this.httpClient.post(environment.url + 'categoria', data);
+    }
+
 }

@@ -1,0 +1,27 @@
+<div class="new-categorys">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>{{title}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form" [formGroup]="regisCategory">
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Categoria</mat-label>
+                        <input matInput placeholder="Descrição" formControlName="name">
+                    </mat-form-field>
+
+
+                    <div class="button-row">
+                        <button mat-stroked-button color="primary" (click)="backPage()">Voltar</button>
+                        <button mat-stroked-button color="accent" (click)="save()">Salvar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
