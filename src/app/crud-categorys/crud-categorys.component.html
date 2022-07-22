@@ -12,27 +12,27 @@
 
 </mat-toolbar>
 
-<div class="list-lauches">
+<div class="list-categorys">
     <div class="container">
 
         <div class="row">
             <div class="col-12">
-                <h1>Lançamentos</h1>
+                <h1>Categorias</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 mb-2">
-                <button mat-stroked-button color="accent" (click)="newLauche()">
-                    Adcionar lançamento
+                <button mat-stroked-button color="accent" (click)="newCategorys()">
+                    Adcionar categoria
                 </button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <app-table-list [dataSource]="dataSource" [tableHeader]="tableHeader" (view)="viewLauches($event)"
-                    (edit)="editLauches($event)" (delete)="deleteLauches($event)"></app-table-list>
+                <app-table-list [dataSource]="dataSource" [tableHeader]="tableHeader" (view)="viewCategorys($event)"
+                    (edit)="editCategorys($event)" (delete)="deleteCategorys($event)"></app-table-list>
             </div>
         </div>
     </div>

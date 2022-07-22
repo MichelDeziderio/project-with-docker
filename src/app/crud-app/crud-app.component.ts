@@ -15,8 +15,6 @@ export class CrudAppComponent implements OnInit {
   primaryData: any;
   tableHeader = ['description', 'category', 'date', 'value', 'options'];
 
-  sendAlertMessage = 'Lançamento cadastrado'
-
   constructor(
     public service: apiService,
     public router: Router,
@@ -40,27 +38,34 @@ export class CrudAppComponent implements OnInit {
     })
   }
 
-  reloadeTablelist(reload: boolean) {
-
-    if (reload) { this.getLauches(); console.log('reload') }
-
-  }
-
   newLauche() {
     this.router.navigate(['lauches/register']);
   }
 
-  openAlerts() {
+  viewLauches(id: string) {
+    this.router.navigate([`lauches/view/${id}`]);
+  }
+
+  editLauches(id: string) {
+    this.router.navigate([`lauches/edit/${id}`]);
+  }
+
+  deleteLauches(id: string) {
+    this.service.deleteLaunche(id).subscribe(result => {
+      this.openAlerts('Seu lançamento foi deletado! 😊');
+      this.getLauches()
+    })
+  }
+
+  openAlerts(message: string) {
     this.alert.open(
-      'Lançamento cadatrado com sucesso',
+      message,
       'Fechar',
       {
         horizontalPosition: 'right',
         verticalPosition: 'top',
         duration: 1000 * 14
       });
-
-    // <button mat-stroked-button color="accent" (click)="openSnack()">Toast</button>
   }
 
 }

@@ -22,6 +22,7 @@ import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.co
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToastAlertComponent } from './shared/toast-alert/toast-alert.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CrudCategorysComponent } from './crud-categorys/crud-categorys.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     CrudAppComponent,
     TableListComponent,
     CrudEditViewComponent,
-    CrudRegisterComponent
+    CrudRegisterComponent,
+    CrudCategorysComponent
   ],
   imports: [
     BrowserModule,

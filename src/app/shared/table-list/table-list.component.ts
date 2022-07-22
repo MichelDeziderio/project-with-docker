@@ -14,6 +14,9 @@ export class TableListComponent implements OnInit {
   @Input() dataSource: any;
   @Input() tableHeader: any;
   @Output() reloadTable = new EventEmitter();
+  @Output() view = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   displayedColumns: string[] = [];
 
@@ -28,29 +31,15 @@ export class TableListComponent implements OnInit {
   }
 
   editData(id: string) {
-    this.router.navigate([`lauches/edit/${id}`]);
+    this.edit.emit(id);
   }
 
   viewData(id: string) {
-    this.router.navigate([`lauches/view/${id}`]);
+    this.view.emit(id);
   }
 
   deleteData(id: string) {
-    this.service.deleteLaunche(id).subscribe(result => {
-      this.openAlerts('Seu lançamento foi deletado! 😊');
-      this.reloadTable.emit(true);
-    })
-  }
-
-  openAlerts(message: string) {
-    this.alert.open(
-      message,
-      'Fechar',
-      {
-        horizontalPosition: 'right',
-        verticalPosition: 'top',
-        duration: 1000 * 14
-      });
+    this.delete.emit(id);
   }
 
 }

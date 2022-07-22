@@ -3,40 +3,30 @@
     <div class="table-list">
         <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Descrição </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="category">
-                <th mat-header-cell *matHeaderCellDef> Categoria </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Data </th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="value">
-                <th mat-header-cell *matHeaderCellDef> Valor </th>
-                <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="options">
-                <th mat-header-cell *matHeaderCellDef> </th>
+            <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                <th mat-header-cell *matHeaderCellDef> {{column}} </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="accent" (click)="viewData(element.id)">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
-                    </button>
-                    <button mat-icon-button color="accent" (click)="editData(element.id)">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-                    </button>
-                    <button mat-icon-button color="accent" (click)="deleteData(element.id)">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-                    </button>
+
+                    <ng-container *ngIf="column != 'options'">
+                        {{element[column]}}
+                    </ng-container>
+
+                    <ng-container *ngIf="column === 'options'">
+
+                        <button mat-icon-button color="accent" (click)="viewData(element.id)">
+                            <mat-icon aria-hidden="false" aria-label="Visualizar">visibility</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="editData(element.id)">
+                            <mat-icon aria-hidden="false" aria-label="Editar">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="deleteData(element.id)">
+                            <mat-icon aria-hidden="false" aria-label="Deletar">delete</mat-icon>
+                        </button>
+
+                    </ng-container>
+
                 </td>
+
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
