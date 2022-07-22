@@ -63,8 +63,10 @@ export class CrudRegisterComponent implements OnInit {
     }
 
     this.service.postLaunches(send).subscribe(result => {
-      this.openAlerts('Seu lançamento foi inserido com sucesso! 😊');
+      this.openAlerts('Seu lançamento foi cadastrado! 😊');
       this.backPage();
+    }, erro => {
+      this.openAlerts('Erro ao cadastrar!');
     })
   }
 

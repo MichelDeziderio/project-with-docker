@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
+import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 import { MergeForCategory } from 'src/app/shared/utils/merge-lauche-and-category';
 
 
@@ -26,7 +27,8 @@ export class CrudEditViewComponent implements OnInit {
     public service: apiService,
     public formBuilder: FormBuilder,
     public router: Router,
-    private dateAdapter: DateAdapter<any>
+    private dateAdapter: DateAdapter<any>,
+    public alert: ToastAlertComponent
   ) {
     this.formEdit = formBuilder.group({
       description: ['', Validators.required],
@@ -110,7 +112,21 @@ export class CrudEditViewComponent implements OnInit {
 
     this.service.postLaunches(send).subscribe(result => {
       console.log(result);
+      this.openAlerts('Seu lançamento foi atualizado! 😊');
+    }, erro => {
+      this.openAlerts('Erro ao atualizado!');
     })
+  }
+
+  openAlerts(message: string) {
+    this.alert.open(
+      message,
+      'Fechar',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 1000 * 14
+      });
   }
 
 }
