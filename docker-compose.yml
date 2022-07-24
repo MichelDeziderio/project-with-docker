@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  project-with-docker:
+    image: project-with-docker
+    build: .
+    ports:
+      - 8081:80
