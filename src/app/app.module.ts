@@ -21,10 +21,10 @@ import { CrudAppComponent } from './crud-app/crud-app.component';
 import { CrudEditViewComponent } from './crud-app/crud-edit-view/crud-edit-view.component';
 import { CrudRegisterComponent } from './crud-app/crud-register/crud-register.component';
 import { CrudCategorysComponent } from './crud-categorys/crud-categorys.component';
-import { CurdRegisterCategoryComponent } from './crud-categorys/curd-register-category/curd-register-category.component';
 import { TableListComponent } from './shared/table-list/table-list.component';
 import { ToastAlertComponent } from './shared/toast-alert/toast-alert.component';
-import { CurdEditViewCategoryComponent } from './crud-categorys/curd-edit-view-category/curd-edit-view-category.component';
+import { CrudEditViewCategoryComponent } from './crud-categorys/crud-edit-view-category/crud-edit-view-category.component';
+import { CrudRegisterCategoryComponent } from './crud-categorys/crud-register-category/crud-register-category.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,8 @@ import { CurdEditViewCategoryComponent } from './crud-categorys/curd-edit-view-c
     CrudEditViewComponent,
     CrudRegisterComponent,
     CrudCategorysComponent,
-    CurdRegisterCategoryComponent,
-    CurdEditViewCategoryComponent
+    CrudRegisterCategoryComponent,
+    CrudEditViewCategoryComponent
   ],
   imports: [
     BrowserModule,

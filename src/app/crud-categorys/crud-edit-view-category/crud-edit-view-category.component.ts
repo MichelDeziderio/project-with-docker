@@ -5,11 +5,11 @@ import { apiService } from 'src/app/services/services.service';
 import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 
 @Component({
-  selector: 'app-curd-edit-view-category',
-  templateUrl: './curd-edit-view-category.component.html',
-  styleUrls: ['./curd-edit-view-category.component.scss']
+  selector: 'app-crud-edit-view-category',
+  templateUrl: './crud-edit-view-category.component.html',
+  styleUrls: ['./crud-edit-view-category.component.scss']
 })
-export class CurdEditViewCategoryComponent implements OnInit {
+export class CrudEditViewCategoryComponent implements OnInit {
 
   formEdit: FormGroup;
   listCategorys: any;

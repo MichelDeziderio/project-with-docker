@@ -5,11 +5,11 @@ import { apiService } from 'src/app/services/services.service';
 import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 
 @Component({
-  selector: 'app-curd-register-category',
-  templateUrl: './curd-register-category.component.html',
-  styleUrls: ['./curd-register-category.component.scss']
+  selector: 'app-crud-register-category',
+  templateUrl: './crud-register-category.component.html',
+  styleUrls: ['./crud-register-category.component.scss']
 })
-export class CurdRegisterCategoryComponent implements OnInit {
+export class CrudRegisterCategoryComponent implements OnInit {
 
   regisCategory: FormGroup;
   title: any;

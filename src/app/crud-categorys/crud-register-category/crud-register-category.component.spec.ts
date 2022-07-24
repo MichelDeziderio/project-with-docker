@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 
-import { CurdRegisterCategoryComponent } from './curd-register-category.component';
+import { CrudRegisterCategoryComponent } from './crud-register-category.component';
 
 const alertStubby = { open: () => ({}) }
 
@@ -14,13 +14,13 @@ const resultRequest = {
   name: 'Transporte'
 }
 
-describe('CurdRegisterCategoryComponent', () => {
-  let component: CurdRegisterCategoryComponent;
-  let fixture: ComponentFixture<CurdRegisterCategoryComponent>;
+describe('CrudRegisterCategoryComponent', () => {
+  let component: CrudRegisterCategoryComponent;
+  let fixture: ComponentFixture<CrudRegisterCategoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CurdRegisterCategoryComponent],
+      declarations: [CrudRegisterCategoryComponent],
       imports: [
         ReactiveFormsModule,
         HttpClientModule,
@@ -33,7 +33,7 @@ describe('CurdRegisterCategoryComponent', () => {
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(CurdRegisterCategoryComponent);
+    fixture = TestBed.createComponent(CrudRegisterCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

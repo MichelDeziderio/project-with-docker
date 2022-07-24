@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
 
-import { CurdEditViewCategoryComponent } from './curd-edit-view-category.component';
+import { CrudEditViewCategoryComponent } from './crud-edit-view-category.component';
 
 const alertStubby = { open: () => ({}) }
 
@@ -15,14 +15,14 @@ const resultRequest = {
   name: 'Alimentação'
 }
 
-describe('CrudEditViewTests', () => {
+describe('CrudEditViewCategoryTests', () => {
   describe('View category test', viewCategory)
   describe('Edit category test', editCategory)
 });
 
 function viewCategory(){
 
-  describe('CurdEditViewCategoryComponent', () => {
+  describe('CrudEditViewCategoryComponent', () => {
 
     const paramsUrl = {
       snapshot: {
@@ -43,12 +43,12 @@ function viewCategory(){
       }
     }
 
-    let component: CurdEditViewCategoryComponent;
-    let fixture: ComponentFixture<CurdEditViewCategoryComponent>;
+    let component: CrudEditViewCategoryComponent;
+    let fixture: ComponentFixture<CrudEditViewCategoryComponent>;
   
     beforeEach(async () => {
       await TestBed.configureTestingModule({
-        declarations: [CurdEditViewCategoryComponent],
+        declarations: [CrudEditViewCategoryComponent],
         imports: [
           HttpClientModule,
           RouterTestingModule,
@@ -61,7 +61,7 @@ function viewCategory(){
       })
         .compileComponents();
   
-      fixture = TestBed.createComponent(CurdEditViewCategoryComponent);
+      fixture = TestBed.createComponent(CrudEditViewCategoryComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
@@ -92,7 +92,7 @@ function viewCategory(){
 
 function editCategory(){
 
-  describe('CurdEditViewCategoryComponent', () => {
+  describe('CrudEditViewCategoryComponent', () => {
 
     const paramsUrl = {
       snapshot: {
@@ -113,12 +113,12 @@ function editCategory(){
       }
     }
 
-    let component: CurdEditViewCategoryComponent;
-    let fixture: ComponentFixture<CurdEditViewCategoryComponent>;
+    let component: CrudEditViewCategoryComponent;
+    let fixture: ComponentFixture<CrudEditViewCategoryComponent>;
   
     beforeEach(async () => {
       await TestBed.configureTestingModule({
-        declarations: [CurdEditViewCategoryComponent],
+        declarations: [CrudEditViewCategoryComponent],
         imports: [
           HttpClientModule,
           RouterTestingModule,
@@ -131,7 +131,7 @@ function editCategory(){
       })
         .compileComponents();
   
-      fixture = TestBed.createComponent(CurdEditViewCategoryComponent);
+      fixture = TestBed.createComponent(CrudEditViewCategoryComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
