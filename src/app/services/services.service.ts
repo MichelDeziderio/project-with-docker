@@ -43,4 +43,8 @@ export class apiService {
         return this.httpClient.post(environment.url + 'categoria', data);
     }
 
+    deleteCategory(id: any): Observable<any> {
+        return this.httpClient.delete(environment.url + 'categoria/' + id);
+    }
+
 }

@@ -44,7 +44,7 @@ export class CrudCategorysComponent implements OnInit {
   }
 
   deleteCategorys(id: string) {
-    this.service.deleteLaunche(id).subscribe(result => {
+    this.service.deleteCategory(id).subscribe(result => {
       this.openAlerts('Sua categoria foi deletada! 😊');
       this.getCategorys()
     })

@@ -17,7 +17,7 @@
 
                     <div class="button-row">
                         <button mat-stroked-button color="primary" (click)="backPage()">Voltar</button>
-                        <button mat-stroked-button color="accent" (click)="save()">Salvar</button>
+                        <button mat-stroked-button color="accent" (click)="save()" [disabled]="regisCategory.invalid">Salvar</button>
                     </div>
 
                 </div>
