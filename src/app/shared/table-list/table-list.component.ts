@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
-import { ToastAlertComponent } from '../toast-alert/toast-alert.component';
 
 @Component({
   selector: 'app-table-list',
@@ -22,8 +21,7 @@ export class TableListComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public service: apiService,
-    public alert: ToastAlertComponent
+    public service: apiService
   ) { }
 
   ngOnInit(): void {

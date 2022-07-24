@@ -26,10 +26,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('project-angular-with-docker');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('project-angular-with-docker app is running!');
-  });
 });

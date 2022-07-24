@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { apiService } from 'src/app/services/services.service';
 import { ToastAlertComponent } from 'src/app/shared/toast-alert/toast-alert.component';
@@ -23,7 +22,6 @@ export class CurdEditViewCategoryComponent implements OnInit {
     public service: apiService,
     public formBuilder: FormBuilder,
     public router: Router,
-    private dateAdapter: DateAdapter<any>,
     public alert: ToastAlertComponent
   ) {
     this.formEdit = formBuilder.group({
@@ -32,7 +30,6 @@ export class CurdEditViewCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dateAdapter.setLocale('br');
     this.getCategorys();
   }
 
@@ -45,17 +42,14 @@ export class CurdEditViewCategoryComponent implements OnInit {
       this.title = 'Editar categoria';
     }
 
-    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+    const getId = this.activatedRoute.snapshot.url[2].path;
 
-      const getId = params.get('id');
-
-      this.service.getCategoryById(getId).subscribe(result => {
-        this.dataSource = result;
-        this.formEdit = this.formBuilder.group({
-          name: [{ value: result.name, disabled: this.disabledForm }, Validators.required]
-        })
-
+    this.service.getCategoryById(getId).subscribe(result => {
+      this.dataSource = result;
+      this.formEdit = this.formBuilder.group({
+        name: [{ value: result.name, disabled: this.disabledForm }, Validators.required]
       })
+
     })
 
   }

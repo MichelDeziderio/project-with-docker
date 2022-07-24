@@ -5,9 +5,7 @@ export function MergeForCategory(lauches: any, categorys: any) {
     categorys.forEach((element: any) => {
         element.category = element.name;
     });
-
-    debugger;
-
+    
     const value = lauches.map((element: Lauches) => ({
         ...categorys.find((o: Category) => o.id === element.idCategoria),
         ...element

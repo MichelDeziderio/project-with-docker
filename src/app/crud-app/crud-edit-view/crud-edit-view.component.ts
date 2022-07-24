@@ -28,7 +28,7 @@ export class CrudEditViewComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     private dateAdapter: DateAdapter<any>,
-    public alert: ToastAlertComponent
+    private alert: ToastAlertComponent
   ) {
     this.formEdit = formBuilder.group({
       description: ['', Validators.required],
