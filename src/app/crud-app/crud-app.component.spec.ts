@@ -90,7 +90,7 @@ describe('CrudAppComponent', () => {
     expect(component.getCategorys).toBeTruthy();
   });
 
-  it('should test func getCategorys', () => {
+  xit('should test func getCategorys', () => {
     spyOn(component.service, 'getCategorys').and.returnValues(of(categoryStubby));
     component.getCategorys();
     component.dataSource = MergeForCategory(laucheStubby, categoryStubby);

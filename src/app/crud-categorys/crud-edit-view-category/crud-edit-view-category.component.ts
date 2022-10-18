@@ -16,6 +16,7 @@ export class CrudEditViewCategoryComponent implements OnInit {
   disabledForm: boolean = false;
   title: any;
   dataSource: any;
+  getId: any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -42,9 +43,9 @@ export class CrudEditViewCategoryComponent implements OnInit {
       this.title = 'Editar categoria';
     }
 
-    const getId = this.activatedRoute.snapshot.url[2].path;
+    this.getId = this.activatedRoute.snapshot.url[2].path;
 
-    this.service.getCategoryById(getId).subscribe(result => {
+    this.service.getCategoryById(this.getId).subscribe(result => {
       this.dataSource = result;
       this.formEdit = this.formBuilder.group({
         name: [{ value: result.name, disabled: this.disabledForm }, Validators.required]
@@ -58,6 +59,30 @@ export class CrudEditViewCategoryComponent implements OnInit {
     this.router.navigate(['categorys']);
   }
 
-  save() { }
+  save() {
+    const name = this.formEdit.get('name');
+
+    const send = {
+      name: name?.value
+    }
+
+    this.service.putCategorys(this.getId, send).subscribe(result => {
+      this.openAlerts('Sua categoria foi editada! 😊');
+      this.backPage();
+    }, erro => {
+      this.openAlerts('Erro ao Editar!');
+    })
+  }
+
+  openAlerts(message: string) {
+    this.alert.open(
+      message,
+      'Fechar',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 1000 * 14
+      });
+  }
 
 }

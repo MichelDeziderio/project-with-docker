@@ -27,6 +27,10 @@ export class apiService {
         return this.httpClient.get(environment.url + 'lancamento/' + id);
     }
 
+    putLaunches(id: string, data: object): Observable<any> {
+        return this.httpClient.put(environment.url + 'lancamento/' + id, data);
+    }
+
     deleteLaunche(id: any): Observable<any> {
         return this.httpClient.delete(environment.url + 'lancamento/' + id);
     }
@@ -41,6 +45,10 @@ export class apiService {
 
     postCategorys(data: object): Observable<any> {
         return this.httpClient.post(environment.url + 'categoria', data);
+    }
+
+    putCategorys(id: string, data: object): Observable<any> {
+        return this.httpClient.put(environment.url + 'categoria/' + id, data);
     }
 
     deleteCategory(id: any): Observable<any> {

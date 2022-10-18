@@ -20,7 +20,7 @@ describe('CrudEditViewCategoryTests', () => {
   describe('Edit category test', editCategory)
 });
 
-function viewCategory(){
+function viewCategory() {
 
   describe('CrudEditViewCategoryComponent', () => {
 
@@ -45,7 +45,7 @@ function viewCategory(){
 
     let component: CrudEditViewCategoryComponent;
     let fixture: ComponentFixture<CrudEditViewCategoryComponent>;
-  
+
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         declarations: [CrudEditViewCategoryComponent],
@@ -60,37 +60,37 @@ function viewCategory(){
         ]
       })
         .compileComponents();
-  
+
       fixture = TestBed.createComponent(CrudEditViewCategoryComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
-  
+
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  
+
     it('should test getCategory view', () => {
-  
+
       spyOn(component.service, 'getCategoryById').and.returnValues(of(resultRequest));
-  
+
       component.getCategorys();
       expect(component.title).toEqual('Visualizar categoria');
       expect(component.disabledForm).toEqual(true);
       expect(component.dataSource).toEqual(resultRequest);
-  
+
     });
-  
+
     it('should test func backPage', () => {
       spyOn(component.router, 'navigate');
       component.backPage();
       expect(component.router.navigate).toHaveBeenCalledWith(['categorys']);
     });
-  
+
   });
 }
 
-function editCategory(){
+function editCategory() {
 
   describe('CrudEditViewCategoryComponent', () => {
 
@@ -115,7 +115,7 @@ function editCategory(){
 
     let component: CrudEditViewCategoryComponent;
     let fixture: ComponentFixture<CrudEditViewCategoryComponent>;
-  
+
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         declarations: [CrudEditViewCategoryComponent],
@@ -130,32 +130,48 @@ function editCategory(){
         ]
       })
         .compileComponents();
-  
+
       fixture = TestBed.createComponent(CrudEditViewCategoryComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
-  
+
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  
+
     it('should test getCategory edit', () => {
       spyOn(component.service, 'getCategoryById').and.returnValues(of(resultRequest));
-  
+
       component.getCategorys();
       expect(component.title).toEqual('Editar categoria');
       expect(component.disabledForm).toEqual(false);
       expect(component.dataSource).toEqual(resultRequest);
-  
+
     });
-  
+
     it('should test func backPage', () => {
       spyOn(component.router, 'navigate');
       component.backPage();
       expect(component.router.navigate).toHaveBeenCalledWith(['categorys']);
     });
-  
+
+    it('should test func save', () => {
+      spyOn(component.service, 'postCategorys').and.returnValues(of(resultRequest));
+
+      component.formEdit.get('name')?.setValue('Instituições de caridade');
+
+      component.save();
+      expect(component.backPage).toBeTruthy();
+      expect(component.alert.open).toBeTruthy();
+    });
+
+    it('should test func openAlerts', () => {
+      spyOn(component.alert, 'open')
+      component.openAlerts('Sua categoria foi cadastrada! 😊');
+      expect(component.alert.open).toBeTruthy();
+    });
+
   });
 }
 

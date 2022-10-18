@@ -21,6 +21,7 @@ export class CrudEditViewComponent implements OnInit {
   listCategorys: any;
   disabledForm: boolean = false;
   title: any;
+  getId: any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -28,7 +29,7 @@ export class CrudEditViewComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     private dateAdapter: DateAdapter<any>,
-    private alert: ToastAlertComponent
+    public alert: ToastAlertComponent
   ) {
     this.formEdit = formBuilder.group({
       description: ['', Validators.required],
@@ -52,17 +53,14 @@ export class CrudEditViewComponent implements OnInit {
       this.title = 'Editar lançamento';
     }
 
-    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+    this.getId = this.activatedRoute.snapshot.url[2].path;
 
-      const getId = params.get('id');
+    this.service.getLauncheById(this.getId).subscribe(result => {
 
-      this.service.getLauncheById(getId).subscribe(result => {
-
-        this.getLauche = [result];
-
-      })
+      this.getLauche = [result];
 
     })
+
   }
 
   getCategorys() {
@@ -72,12 +70,9 @@ export class CrudEditViewComponent implements OnInit {
 
       const mergeData = MergeForCategory(this.getLauche, result)[0];
 
-      this.dateValue = new FormControl(this.convertDate(mergeData.date));
-
-
       this.formEdit = this.formBuilder.group({
         description: [{ value: mergeData.description, disabled: this.disabledForm }, Validators.required],
-        date: [{ value: this.dateValue.value, disabled: true }],
+        date: [{ value: this.convertDate(mergeData.date), disabled: true }],
         category: [{ value: mergeData.id, disabled: this.disabledForm }, Validators.required],
         value: [{ value: mergeData.value, disabled: true }, Validators.required]
       })
@@ -91,7 +86,12 @@ export class CrudEditViewComponent implements OnInit {
   }
 
   convertDate(date: string) {
+
     let newDate: any = date.split('/');
+
+    newDate[0] = Number(newDate[0]) + 1;
+    newDate[0] = newDate[0].toString();
+
     return newDate = new Date(`${newDate[2]}-${newDate[1]}-${newDate[0]}`)
   }
 
@@ -107,12 +107,10 @@ export class CrudEditViewComponent implements OnInit {
       idCategoria: this.dataSource.idCategoria,
       value: value?.value
     }
-    console.log(send);
-    return;
 
-    this.service.postLaunches(send).subscribe(result => {
-      console.log(result);
+    this.service.putLaunches(this.getId, send).subscribe(result => {
       this.openAlerts('Seu lançamento foi atualizado! 😊');
+      this.backPage();
     }, erro => {
       this.openAlerts('Erro ao atualizado!');
     })
